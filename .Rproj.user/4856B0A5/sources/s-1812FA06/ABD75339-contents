@@ -1,0 +1,30 @@
+library(RISmed)
+library(dplyr)
+
+
+
+
+
+
+res1 <- EUtilsSummary("dog tumor ", 
+                      type = "esearch", 
+                      db = "pubmed",
+                      datetype = "pdat"
+                      #retmax = 
+                      #mindate = 2016, 
+                      #maxdate = 2018)
+)
+fetch <- EUtilsGet(res1, type = "efetch", db = "pubmed")
+
+
+abstracts <- data.frame(title = fetch@ArticleTitle,
+                        #author=fetch@Author,
+                        abstract = fetch@AbstractText, 
+                        journal = fetch@Title,
+                        DOI = fetch@PMID, 
+                        year = fetch@YearPubmed)
+## ensure abstracts are character fields (not factors)
+abstracts <- abstracts %>% mutate(abstract = as.character(abstract))
+
+
+

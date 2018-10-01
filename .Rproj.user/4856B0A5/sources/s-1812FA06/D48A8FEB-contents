@@ -1,0 +1,49 @@
+
+shinyServer(function(input, output) {
+  
+  word1<-eventReactive(input$goButton, {input$key})
+  
+  res<-reactive({
+    d1<-input$date1
+    d2<-input$date2
+    
+    res <- EUtilsSummary(word1(), 
+                         type="esearch", 
+                         db="pubmed", 
+                         datetype='pdat', 
+                         mindate=d1, maxdate=d2
+                         #retmax=500
+                         )
+  })
+  
+  tabres<-reactive({
+    fetch <- EUtilsGet(res(), type = "efetch", db = "pubmed")
+    abstracts <- data.frame(title = fetch@ArticleTitle,
+                            #author=fetch@Author,
+                            #abstract = fetch@AbstractText, 
+                            journal = fetch@Title,
+                            DOI = fetch@PMID, 
+                            year = fetch@YearPubmed)
+    #abstracts <- abstracts %>% 
+                 #mutate(abstract = as.character(abstract))# %>% 
+                 #select(title,author,journal, DOI, year)
+    
+    abstracts
+  })
+  
+ #####stampa la query e il numero di articoli estratti 
+  output$query <- renderPrint({  
+    summary(res()) 
+    })
+  ####stampa tabella con articoli estratti#######
+  
+  output$tabella<-DT::renderDataTable(
+    tabres()
+  )
+  
+  
+  
+  
+})
+
+

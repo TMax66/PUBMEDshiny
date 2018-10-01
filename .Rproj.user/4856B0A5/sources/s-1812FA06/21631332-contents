@@ -1,0 +1,10 @@
+scholar = function(scholar.id='lhc97roAAAAJ'){
+  ret = list() # start with blank output
+  bio = scholar::get_profile(id=scholar.id) # get basics
+  name = bio$name
+  affiliation = bio$affiliation
+  ret$name = name
+  ret$affiliation = affiliation
+  return(ret)
+}
+})

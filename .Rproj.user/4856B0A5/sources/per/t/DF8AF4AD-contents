@@ -1,0 +1,13 @@
+library(shiny)
+library(scholar)
+shinyUI(fluidPage(
+  sidebarLayout(
+    sidebarPanel(
+      textInput(inputId = "google.id",
+                label = "Google Scholar ID (12 characters)",
+                value='lhc97roAAAAJ')
+    ),
+    mainPanel(
+      textOutput(outputId = 'h_text')
+    ) # end of main panel
+  )))

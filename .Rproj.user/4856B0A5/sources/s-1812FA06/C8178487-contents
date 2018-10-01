@@ -1,0 +1,10 @@
+shinyServer(function(input, output) {
+  source('scholar.R')
+  results <- function(){
+    results = scholar(scholar.id=input$google.id)
+    results
+  }
+  output$h_text <- renderText({
+    paste(results()$name, '.\n',
+          results()$affiliation, '.\n')
+  })

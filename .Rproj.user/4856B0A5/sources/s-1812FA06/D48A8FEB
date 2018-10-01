@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1530634458451.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "D48A8FEB",
+    "lastKnownWriteTime" : 1530636943,
+    "last_content_update" : 1530636943854,
+    "path" : "~/Desktop/PUBMEDshiny/server.R",
+    "project_path" : "server.R",
+    "properties" : {
+        "cursorPosition" : "27,18",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
